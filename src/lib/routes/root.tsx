@@ -1,7 +1,11 @@
+import { Outlet } from "react-router-dom";
+
 const Root = () => {
   return (
-    <div>
-      <h1>Root</h1>
+    <div className="bg-grid flex justify-center min-h-dvh py-8 px-12">
+      <div className="w-full max-w-[1600px] rounded-[20px] shadow-body bg-background p-5">
+        <Outlet />
+      </div>
     </div>
   );
 };
