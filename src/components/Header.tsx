@@ -13,7 +13,12 @@ const Header = () => {
       <div className="flex items-center bg-background rounded-full px-2 py-1 shadow-body">
         <div className="flex h-8 items-center gap-3 px-4 font-semibold rounded-full">
           <CodeXml size={20} />
-          Source Code
+          <a
+            href="https://github.com/terrence-ou/Bento-News"
+            target="_blank"
+          >
+            Source Code
+          </a>
         </div>
         <div className="flex h-8 items-center gap-3 px-4 bg-primary font-semibold text-secondary rounded-full">
           <CloudDownload size={20} />

@@ -84,7 +84,7 @@ const Card = ({
   return (
     <div className="animate-translateZ-card p-2 border bg-background/80 rounded-lg transition-all duration-150 shadow-news-card">
       <img src={img} />
-      <h1 className="font-semibold leading-tight text-md hover:underline">
+      <h1 className="font-semibold leading-tight text-md hover:underline hover:cursor-pointer">
         {news.title}
       </h1>
       <div className="flex justify-start items-center gap-2 my-3">

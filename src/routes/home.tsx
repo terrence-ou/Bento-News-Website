@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { cn } from "../lib/utils";
 import NewsAppView from "@/components/NewsAppView";
 import Header from "@/components/Header";
+import { Sparkles } from "lucide-react";
 
 const baseSize: number = 80;
 const padding: number = 10;
@@ -40,15 +41,27 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative flex w-full h-[630px] bg-primary/10 rounded-[16px] p-5 overflow-hidden">
+    <div className="relative flex flex-col w-full h-[630px] bg-primary/10 rounded-[16px] p-5 overflow-hidden">
       <Header />
       <div className="absolute bottom-[250px] left-[55px] z-30">
+        <div className="py-8 text-xl tracking-tight">
+          <div className="flex items-center">
+            <p>Your</p>
+            <Sparkles className="w-4 ml-2" />
+            <p className="font-semibold px-1">AI-driven</p>
+            <Sparkles className="w-4 mr-2" />
+            <p>News APP</p>
+          </div>
+          <div className="font-bold">
+            1000x faster then Google News. *
+          </div>
+        </div>
         {Array.from("BENTONEWS").map((letter, i) => {
           return (
-            <p
+            <div
               key={`home-${letter}-${i}`}
               className={cn(
-                "absolute font-bold content-center text-center transition-all duration-500 rounded-lg shadow-lg",
+                "absolute flex items-center justify-center font-bold transition-all duration-500 rounded-lg shadow-lg",
                 i > 4
                   ? "bg-primary text-secondary font-serif text-[56px]"
                   : "bg-secondary text-primary font-sans text-[60px]"
@@ -60,7 +73,7 @@ const Home = () => {
               }}
             >
               {letter}
-            </p>
+            </div>
           );
         })}
       </div>
