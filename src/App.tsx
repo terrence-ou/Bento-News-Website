@@ -1,6 +1,6 @@
 import { createHashRouter, RouterProvider } from "react-router-dom";
-import Root from "./lib/routes/root";
-import Home from "./lib/routes/home";
+import Root from "./routes/root";
+import Home from "./routes/home";
 
 const router = createHashRouter(
   [

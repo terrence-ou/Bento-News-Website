@@ -4,6 +4,15 @@ export default {
   content: ["./index.html", "./src/**/*.{ts,tsx,js,jsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        serif: [
+          "Merriweather",
+          "Georgia",
+          "Times New Roman",
+          "Times",
+          "serif",
+        ],
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -53,6 +62,8 @@ export default {
       },
       boxShadow: {
         body: "0px 0px 20px -5px hsl(var(--primary)/0.6)",
+        "news-card": "3px 2px 4px 0px hsl(var(--primary) / 0.1)",
+        workspace: "inset 3px 2px 4px 0px hsl(var(--primary) / 0.2)",
       },
     },
   },

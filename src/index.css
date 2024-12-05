@@ -1,3 +1,6 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap"); */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -80,4 +83,43 @@
 
 .bg-grid {
   @apply bg-[linear-gradient(to_right,#80808030_1px,transparent_1px),linear-gradient(to_bottom,#80808030_1px,transparent_1px)] bg-[size:20px_20px];
+}
+
+.bg-grid-small {
+  @apply bg-[linear-gradient(to_right,#80808015_1px,transparent_1px),linear-gradient(to_bottom,#80808015_1px,transparent_1px)] bg-[size:16px_16px];
+}
+
+@keyframes translateZAnimation {
+  from {
+    transform: perspective(2400px) translateZ(400px) translateY(-10px);
+  }
+  to {
+    transform: perspective(2400px) translateZ(0px) translateY(0px);
+  }
+}
+
+@keyframes translateZAnimationCard {
+  from {
+    opacity: 0;
+  }
+  10% {
+    transform: perspective(2400px) translateZ(600px) translateY(-30px)
+      translateX(-30px) scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: perspective(2400px) translateZ(0px) translateY(0px)
+      scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-translateZ {
+  animation: translateZAnimation 2s forwards
+    cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.animate-translateZ-card {
+  animation: translateZAnimationCard 2s forwards
+    cubic-bezier(0.19, 1, 0.22, 1);
 }

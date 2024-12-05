@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { cn } from "../utils";
+import { cn } from "../lib/utils";
+import NewsAppView from "@/components/NewsAppView";
 
 const baseSize: number = 90;
-const padding: number = 15;
+const padding: number = 10;
 const size: number = baseSize + padding;
 
 const orderedCoords = [
@@ -38,17 +39,17 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative flex w-full h-[600px] bg-primary/10 rounded-[20px]">
-      <div className="absolute bottom-[250px] left-[55px]">
+    <div className="relative flex w-full h-[630px] bg-primary/10 rounded-[16px] p-5 overflow-hidden">
+      <div className="absolute bottom-[250px] left-[55px] z-30">
         {Array.from("BENTONEWS").map((letter, i) => {
           return (
             <p
               key={`home-${letter}-${i}`}
               className={cn(
-                "absolute text-[60px] font-bold content-center text-center transition-all duration-500 rounded-lg shadow-lg",
+                "absolute font-bold content-center text-center transition-all duration-500 rounded-lg shadow-lg",
                 i > 4
-                  ? "bg-primary text-secondary font-serif"
-                  : "bg-secondary text-primary font-sans"
+                  ? "bg-primary text-secondary font-serif text-[56px]"
+                  : "bg-secondary text-primary font-sans text-[60px]"
               )}
               style={{
                 width: baseSize,
@@ -61,6 +62,7 @@ const Home = () => {
           );
         })}
       </div>
+      <NewsAppView />
     </div>
   );
 };
