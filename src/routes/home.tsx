@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { cn } from "../lib/utils";
 import NewsAppView from "@/components/NewsAppView";
+import Header from "@/components/Header";
 
-const baseSize: number = 90;
+const baseSize: number = 80;
 const padding: number = 10;
 const size: number = baseSize + padding;
 
@@ -40,6 +41,7 @@ const Home = () => {
 
   return (
     <div className="relative flex w-full h-[630px] bg-primary/10 rounded-[16px] p-5 overflow-hidden">
+      <Header />
       <div className="absolute bottom-[250px] left-[55px] z-30">
         {Array.from("BENTONEWS").map((letter, i) => {
           return (

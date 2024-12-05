@@ -1,7 +1,19 @@
+import { mockNews } from "@/const";
+import img0 from "../assets/imgs/0.jpeg";
+import img1 from "../assets/imgs/1.jpeg";
+import img2 from "../assets/imgs/2.jpeg";
+import img3 from "../assets/imgs/3.jpeg";
+import img4 from "../assets/imgs/4.jpeg";
+import img5 from "../assets/imgs/5.jpeg";
+import img6 from "../assets/imgs/6.jpeg";
+import img7 from "../assets/imgs/7.jpeg";
+
+const imgs = [img0, img1, img2, img3, img4, img5, img6, img7];
+
 const NewsAppView = () => {
   return (
     <div
-      className="absolute -bottom-80 right-5 w-[1000px] h-[900px] z-10"
+      className="absolute -bottom-[400px] left-[30%] w-[1100px] z-10"
       style={{
         perspective: "1400px",
       }}
@@ -54,19 +66,38 @@ const Body = () => {
         Today's Headlines
       </h2>
       <div className="grid grid-cols-4 gap-4">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        {mockNews.map((news, i) => (
+          <Card key={news.title} news={news} img={imgs[i]} />
+        ))}
       </div>
     </div>
   );
 };
 
-const Card = () => {
+const Card = ({
+  news,
+  img,
+}: {
+  news: (typeof mockNews)[0];
+  img: string;
+}) => {
   return (
-    <div className="animate-translateZ-card p-2 border bg-background/80 rounded-lg transition-all duration-150 shadow-news-card h-[300px]"></div>
+    <div className="animate-translateZ-card p-2 border bg-background/80 rounded-lg transition-all duration-150 shadow-news-card">
+      <img src={img} />
+      <h1 className="font-semibold leading-tight text-md hover:underline">
+        {news.title}
+      </h1>
+      <div className="flex justify-start items-center gap-2 my-3">
+        <div className="flex items-center justify-center max-w-[60%] px-2 font-semibold text-xs text-background bg-primary/70 rounded">
+          {news.source}
+        </div>
+
+        <p className="text-xs text-primary/50">
+          {news.publishedAt.slice(0, 10)}
+        </p>
+      </div>
+      <p className="font-serif text-[0.8rem]">{news.description}</p>
+    </div>
   );
 };
 
