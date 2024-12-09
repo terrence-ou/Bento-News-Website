@@ -3,6 +3,7 @@ import { cn } from "../lib/utils";
 import NewsAppView from "@/components/NewsAppView";
 import Header from "@/components/Header";
 import { Sparkles } from "lucide-react";
+import StoreFront from "@/components/StoreFront";
 
 const baseSize: number = 80;
 const padding: number = 10;
@@ -41,44 +42,80 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="relative flex flex-col w-full h-[630px] bg-primary/10 rounded-[16px] p-5 overflow-hidden">
-      <Header />
-      <div className="absolute bottom-[250px] left-[55px] z-30">
-        <div className="py-8 text-xl tracking-tight">
-          <div className="flex items-center">
-            <p>Your</p>
-            <Sparkles className="w-4 ml-2" />
-            <p className="font-semibold px-1">AI-driven</p>
-            <Sparkles className="w-4 mr-2" />
-            <p>News APP</p>
-          </div>
-          <div className="font-bold">
-            1000x faster then Google News. *
-          </div>
-        </div>
-        {Array.from("BENTONEWS").map((letter, i) => {
-          return (
-            <div
-              key={`home-${letter}-${i}`}
-              className={cn(
-                "absolute flex items-center justify-center font-bold transition-all duration-500 rounded-lg shadow-lg",
-                i > 4
-                  ? "bg-primary text-secondary font-serif text-[56px]"
-                  : "bg-secondary text-primary font-sans text-[60px]"
-              )}
-              style={{
-                width: baseSize,
-                height: baseSize,
-                transform: `translate(${coords[i][0]}px, ${coords[i][1]}px)`,
-              }}
-            >
-              {letter}
+    <>
+      <div className="relative flex flex-col w-full h-[630px] bg-primary/10 rounded-[16px] p-5 overflow-hidden">
+        <Header />
+        <div className="absolute bottom-[250px] left-[55px] z-30">
+          <div className="py-8 text-xl tracking-tight">
+            <div className="flex items-center">
+              <p>Your</p>
+              <Sparkles className="w-4 ml-2" />
+              <p className="font-semibold px-1">AI-driven</p>
+              <Sparkles className="w-4 mr-2" />
+              <p>News APP</p>
             </div>
-          );
-        })}
+            <div className="font-bold">
+              1000x faster then Google News. *
+            </div>
+          </div>
+          {Array.from("BENTONEWS").map((letter, i) => {
+            return (
+              <div
+                key={`home-${letter}-${i}`}
+                className={cn(
+                  "absolute flex items-center justify-center font-bold transition-all duration-500 rounded-lg shadow-lg",
+                  i > 4
+                    ? "bg-primary text-secondary font-serif text-[56px]"
+                    : "bg-secondary text-primary font-sans text-[60px]"
+                )}
+                style={{
+                  width: baseSize,
+                  height: baseSize,
+                  transform: `translate(${coords[i][0]}px, ${coords[i][1]}px)`,
+                }}
+              >
+                {letter}
+              </div>
+            );
+          })}
+        </div>
+        <NewsAppView />
       </div>
-      <NewsAppView />
-    </div>
+      <div className="text-center my-20">
+        <h1 className="text-[32px] font-bold animate-fade-in tracking-wide">
+          Revolutionize how you manage and analyze news
+        </h1>
+        <div className="text-[18px] font-medium leading-tight text-primary/60 tracking-tight">
+          <p className="animate-fade-in-1">
+            Bento News supports content from over{" "}
+            <span className="font-bold text-primary/80">3,000</span>{" "}
+            trusted media outlets worldwide, and supports searches in
+            more than{" "}
+            <span className="font-bold text-primary/80">
+              10 languages
+            </span>{" "}
+            .
+          </p>
+          <p className="animate-fade-in-2">
+            Collect, organize, and analyze the news exactly the way
+            you want, with all content stored locally to{" "}
+            <span className="font-bold text-primary/80">
+              ensure your privacy
+            </span>
+            .
+          </p>
+          <p className="animate-fade-in-3">
+            Harness{" "}
+            <span className="font-bold text-primary/80">
+              AI-driven tools
+            </span>{" "}
+            to gain broader and deeper insights into your curated
+            collection.
+          </p>
+        </div>
+      </div>
+      <StoreFront />
+    </>
   );
 };
 
