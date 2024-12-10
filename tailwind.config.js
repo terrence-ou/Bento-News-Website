@@ -71,6 +71,30 @@ export default {
           "0%": { opacity: 0, transform: "translateY(20px)" },
           "100%": { opacity: 1, transform: "translateY(0)" },
         },
+        scroll: {
+          "0%": { transform: "translateY(0)" },
+          "10%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-35%)" },
+          "60%": { transform: "translateY(-35%)" },
+          "100%": { transform: "translateY(0px)" },
+        },
+        zoom: {
+          "0%": {
+            transform: "translateY(-62%) translateX(-30%) scale(1.5)",
+          },
+          "20%": {
+            transform: "translateY(-62%) translateX(-30%) scale(1.5)",
+          },
+          "50%": {
+            transform: "translateX(0) translateY(0) scale(1.0)",
+          },
+          "70%": {
+            transform: "translateX(0) translateY(0) scale(1.0)",
+          },
+          "100%": {
+            transform: "translateY(-62%) translateX(-30%) scale(1.5)",
+          },
+        },
       },
       animation: {
         "fade-in": "fade-in-pos 1s ease-in-out",
@@ -78,6 +102,8 @@ export default {
         "fade-in-2": "fade-in-pos 1.4s ease-in-out",
         "fade-in-3": "fade-in-pos 1.6s ease-in-out",
         "fade-in-opacity": "fade-in 0.6s ease-in-out",
+        scroll: "scroll 8s ease-in-out infinite",
+        zoom: "zoom 8s ease-in-out infinite",
       },
       boxShadow: {
         body: "0px 0px 20px -5px hsl(var(--primary)/0.6)",

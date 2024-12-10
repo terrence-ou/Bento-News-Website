@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Circle, CircleDashed } from "lucide-react";
 import { cn } from "@/lib/utils";
+import headlinesImg from "@/assets/imgs/headlines.png";
+import searchImg from "@/assets/imgs/search.png";
 
 const descriptions = [
   {
@@ -35,6 +37,18 @@ const StoreFront = () => {
   const handleExpand = (i: number) => {
     setCurrExpand(i);
   };
+
+  const getDemo = () => {
+    switch (currExpand) {
+      case 0:
+        return <Scroll />;
+      case 1:
+        return <Search />;
+      default:
+        return <></>;
+    }
+  };
+
   return (
     <div className="w-full grid grid-cols-5 px-16 py-7 border-primary/40 border rounded-xl border-dashed">
       <div className="col-span-2">
@@ -54,7 +68,10 @@ const StoreFront = () => {
               <div className="flex gap-2 items-center">
                 <div>
                   {currExpand === i ? (
-                    <Circle className="w-4 stroke-primary" />
+                    <Circle
+                      className="w-4 stroke-primary"
+                      strokeWidth={"3px"}
+                    />
                   ) : (
                     <CircleDashed className="w-4 stroke-primary/20" />
                   )}
@@ -79,9 +96,29 @@ const StoreFront = () => {
           ))}
         </div>
       </div>
-      <div className="col-span-3"></div>
+      <div className="col-span-3 h-[540px] overflow-hidden rounded-lg shadow-body">
+        {getDemo()}
+      </div>
     </div>
   );
 };
 
+const Scroll = () => {
+  return (
+    <img
+      src={headlinesImg}
+      className="w-full rounded-xl animate-scroll"
+    />
+  );
+};
+
+const Search = () => {
+  return (
+    <img src={searchImg} className="w-full rounded-xl animate-zoom" />
+  );
+};
+
+const LocalNews = () => {
+  return <div></div>;
+};
 export default StoreFront;
