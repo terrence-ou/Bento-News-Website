@@ -44,6 +44,8 @@ const StoreFront = () => {
         return <Scroll />;
       case 1:
         return <Search />;
+      case 2:
+        return <LocalNews />;
       default:
         return <></>;
     }
