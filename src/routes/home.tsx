@@ -81,36 +81,30 @@ const Home = () => {
         </div>
         <NewsAppView />
       </div>
-      <div className="text-center my-20">
-        <h1 className="text-[32px] font-bold animate-fade-in tracking-wide">
+      <div className="text-center my-24">
+        <h1 className="text-[32px] font-bold animate-fade-in tracking-wide my-2">
           Revolutionize how you manage and analyze news
         </h1>
         <div className="text-[18px] font-medium leading-tight text-primary/60 tracking-tight">
           <p className="animate-fade-in-1">
             Bento News supports content from over{" "}
             <span className="font-bold text-primary/80">3,000</span>{" "}
-            trusted media outlets worldwide, and supports searches in
-            more than{" "}
-            <span className="font-bold text-primary/80">
-              10 languages
-            </span>{" "}
-            .
+            trusted media outlets worldwide.
           </p>
           <p className="animate-fade-in-2">
-            Collect, organize, and analyze the news exactly the way
-            you want, with all content stored locally to{" "}
-            <span className="font-bold text-primary/80">
-              ensure your privacy
-            </span>
-            .
-          </p>
-          <p className="animate-fade-in-3">
             Harness{" "}
             <span className="font-bold text-primary/80">
               AI-driven tools
             </span>{" "}
             to gain broader and deeper insights into your curated
             collection.
+          </p>
+          <p className="animate-fade-in-3">
+            Collect and organize the news as you preferred locally to{" "}
+            <span className="font-bold text-primary/80">
+              ensure your privacy
+            </span>
+            .
           </p>
         </div>
       </div>

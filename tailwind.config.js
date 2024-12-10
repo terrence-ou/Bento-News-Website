@@ -64,15 +64,20 @@ export default {
       },
       keyframes: {
         "fade-in": {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+        "fade-in-pos": {
           "0%": { opacity: 0, transform: "translateY(20px)" },
           "100%": { opacity: 1, transform: "translateY(0)" },
         },
       },
       animation: {
-        "fade-in": "fade-in 1s ease-in-out",
-        "fade-in-1": "fade-in 1.2s ease-in-out",
-        "fade-in-2": "fade-in 1.4s ease-in-out",
-        "fade-in-3": "fade-in 1.6s ease-in-out",
+        "fade-in": "fade-in-pos 1s ease-in-out",
+        "fade-in-1": "fade-in-pos 1.2s ease-in-out",
+        "fade-in-2": "fade-in-pos 1.4s ease-in-out",
+        "fade-in-3": "fade-in-pos 1.6s ease-in-out",
+        "fade-in-opacity": "fade-in 0.6s ease-in-out",
       },
       boxShadow: {
         body: "0px 0px 20px -5px hsl(var(--primary)/0.6)",
