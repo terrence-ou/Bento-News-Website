@@ -114,6 +114,17 @@
   }
 }
 
+@keyframes blurIn {
+  from {
+    filter: blur(10px);
+    opacity: 0.3;
+  }
+  to {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
 .animate-translateZ {
   animation: translateZAnimation 2s forwards
     cubic-bezier(0.19, 1, 0.22, 1);

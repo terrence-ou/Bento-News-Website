@@ -44,7 +44,7 @@ const descriptions = [
 ];
 
 const StoreFront = () => {
-  const [currExpand, setCurrExpand] = useState<number>(4);
+  const [currExpand, setCurrExpand] = useState<number>(0);
   const handleExpand = (i: number) => {
     setCurrExpand(i);
   };
@@ -187,11 +187,14 @@ const GenImgs = () => {
         <figure
           key={`imagestyle-${styles[i]}`}
           className="text-center"
-          style={{
-            animation: `blur-in ${Math.random().toFixed(2) + 1}s ease-in`,
-          }}
         >
-          <img src={img} className="w-56" />
+          <img
+            src={img}
+            className="w-56"
+            style={{
+              animation: `blurIn ${Math.random() * 3 + 0.5}s`,
+            }}
+          />
           <p className="font-mono font-bold text-primary/70">
             {styles[i]}
           </p>
