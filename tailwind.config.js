@@ -138,6 +138,10 @@ export default {
               "translateX(70%) translateY(14%) rotate(-6deg)",
           },
         },
+        "blur-in": {
+          "0%": { filter: "blur(10px)" },
+          "100%": { filter: "blur(0px)" },
+        },
       },
       animation: {
         "fade-in": "fade-in-pos 1s ease-in-out",

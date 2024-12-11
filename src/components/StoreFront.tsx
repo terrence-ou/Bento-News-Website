@@ -9,6 +9,11 @@ import aiImg1 from "@/assets/imgs/ai-1.png";
 import aiImg2 from "@/assets/imgs/ai-2.png";
 import aiImg3 from "@/assets/imgs/ai-3.png";
 import aiImg4 from "@/assets/imgs/ai-4.png";
+import genImg1 from "@/assets/imgs/gen-img-1.jpg";
+import genImg2 from "@/assets/imgs/gen-img-2.jpg";
+import genImg3 from "@/assets/imgs/gen-img-3.jpg";
+import genImg4 from "@/assets/imgs/gen-img-4.jpg";
+import genImg5 from "@/assets/imgs/gen-img-5.jpg";
 
 const descriptions = [
   {
@@ -39,7 +44,7 @@ const descriptions = [
 ];
 
 const StoreFront = () => {
-  const [currExpand, setCurrExpand] = useState<number>(0);
+  const [currExpand, setCurrExpand] = useState<number>(4);
   const handleExpand = (i: number) => {
     setCurrExpand(i);
   };
@@ -54,14 +59,16 @@ const StoreFront = () => {
         return <LocalNews />;
       case 3:
         return <AIs />;
+      case 4:
+        return <GenImgs />;
       default:
         return <></>;
     }
   };
 
   return (
-    <div className="w-full grid grid-cols-5 px-16 py-7 border-primary/40 border rounded-xl border-dashed">
-      <div className="col-span-2">
+    <div className="relative w-full grid grid-cols-5 border-primary/40 border rounded-xl border-dashed overflow-hidden my-4">
+      <div className="col-span-2 pl-20 pt-20">
         <h2 className="text-2xl font-bold tracking-tighter pb-4 text-primary/80">
           Bento News's Unique Features
         </h2>
@@ -106,7 +113,7 @@ const StoreFront = () => {
           ))}
         </div>
       </div>
-      <div className="col-span-3 h-[540px] overflow-hidden rounded-lg shadow-body">
+      <div className="col-span-3 h-[540px] overflow-hidden rounded-lg mt-4 mr-4">
         {getDemo()}
       </div>
     </div>
@@ -164,4 +171,34 @@ const AIs = () => {
     </div>
   );
 };
+
+const GenImgs = () => {
+  const imgs = [genImg1, genImg2, genImg3, genImg4, genImg5];
+  const styles = [
+    "Stippled",
+    "Watercolor",
+    "Line Art",
+    "Cartoon",
+    "Kids",
+  ];
+  return (
+    <div className="flex flex-wrap gap-5 justify-center">
+      {imgs.map((img, i) => (
+        <figure
+          key={`imagestyle-${styles[i]}`}
+          className="text-center"
+          style={{
+            animation: `blur-in ${Math.random().toFixed(2) + 1}s ease-in`,
+          }}
+        >
+          <img src={img} className="w-56" />
+          <p className="font-mono font-bold text-primary/70">
+            {styles[i]}
+          </p>
+        </figure>
+      ))}
+    </div>
+  );
+};
+
 export default StoreFront;
