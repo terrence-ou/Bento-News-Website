@@ -3,6 +3,12 @@ import { Circle, CircleDashed } from "lucide-react";
 import { cn } from "@/lib/utils";
 import headlinesImg from "@/assets/imgs/headlines.png";
 import searchImg from "@/assets/imgs/search.png";
+import localNewsImg1 from "@/assets/imgs/local.png";
+import localNewsImg2 from "@/assets/imgs/local-2.png";
+import aiImg1 from "@/assets/imgs/ai-1.png";
+import aiImg2 from "@/assets/imgs/ai-2.png";
+import aiImg3 from "@/assets/imgs/ai-3.png";
+import aiImg4 from "@/assets/imgs/ai-4.png";
 
 const descriptions = [
   {
@@ -33,7 +39,7 @@ const descriptions = [
 ];
 
 const StoreFront = () => {
-  const [currExpand, setCurrExpand] = useState<number>(0);
+  const [currExpand, setCurrExpand] = useState<number>(3);
   const handleExpand = (i: number) => {
     setCurrExpand(i);
   };
@@ -46,6 +52,8 @@ const StoreFront = () => {
         return <Search />;
       case 2:
         return <LocalNews />;
+      case 3:
+        return <AIs />;
       default:
         return <></>;
     }
@@ -105,6 +113,8 @@ const StoreFront = () => {
   );
 };
 
+// ========== Sub components ==========
+
 const Scroll = () => {
   return (
     <img
@@ -121,6 +131,37 @@ const Search = () => {
 };
 
 const LocalNews = () => {
-  return <div></div>;
+  return (
+    <div className="relative">
+      <img
+        src={localNewsImg2}
+        className="absolute animate-slide-in"
+      />
+      <img src={localNewsImg1} />
+    </div>
+  );
+};
+
+const AIs = () => {
+  return (
+    <div className="relative">
+      <img
+        src={aiImg4}
+        className="absolute w-[45%] translate-x-[120%] rotate-[3deg] animate-swin-1"
+      />
+      <img
+        src={aiImg1}
+        className="absolute w-[45%] translate-y-0 -rotate-[6deg] animate-swin-2"
+      />
+      <img
+        src={aiImg2}
+        className="absolute w-[45%] translate-x-[40%] rotate-[20deg] animate-swin-3"
+      />
+      <img
+        src={aiImg3}
+        className="absolute w-[45%] translate-x-[70%] translate-y-[14%] -rotate-[6deg] animate-swin-4"
+      />
+    </div>
+  );
 };
 export default StoreFront;

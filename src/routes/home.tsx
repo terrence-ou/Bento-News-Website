@@ -81,7 +81,7 @@ const Home = () => {
         </div>
         <NewsAppView />
       </div>
-      <div className="text-center my-24">
+      <div className="text-center my-32">
         <h1 className="text-[32px] font-bold animate-fade-in tracking-wide my-2">
           Revolutionize how you manage and analyze news
         </h1>
