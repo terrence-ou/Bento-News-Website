@@ -39,7 +39,7 @@ const descriptions = [
 ];
 
 const StoreFront = () => {
-  const [currExpand, setCurrExpand] = useState<number>(3);
+  const [currExpand, setCurrExpand] = useState<number>(0);
   const handleExpand = (i: number) => {
     setCurrExpand(i);
   };
@@ -65,15 +65,14 @@ const StoreFront = () => {
         <h2 className="text-2xl font-bold tracking-tighter pb-4 text-primary/80">
           Bento News's Unique Features
         </h2>
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full py-6">
           {descriptions.map((desc, i) => (
             <div
               className={cn(
-                "rounded-lg transition-all duration-300 cursor-pointer",
+                "rounded-lg transition-all duration-300",
                 i === currExpand ? "h-28" : "h-8"
               )}
               key={desc.title}
-              onClick={() => handleExpand(i)}
             >
               <div className="flex gap-2 items-center">
                 <div>
@@ -88,17 +87,18 @@ const StoreFront = () => {
                 </div>
                 <h3
                   className={cn(
-                    "text-lg font-bold transition-all duration-300",
+                    "text-lg font-bold transition-all duration-300 hover:text-primary/80 cursor-pointer",
                     i === currExpand
                       ? "text-primary"
                       : "text-primary/20"
                   )}
+                  onClick={() => handleExpand(i)}
                 >
                   {desc.title}
                 </h3>
               </div>
               {currExpand === i && (
-                <p className="pl-6 pr-20 py-1 animate-fade-in-opacity font-serif leading-tight text-primary/70">
+                <p className="pl-6 pr-24 py-1 animate-fade-in-opacity font-serif leading-tight text-primary/70">
                   {desc.description}
                 </p>
               )}
