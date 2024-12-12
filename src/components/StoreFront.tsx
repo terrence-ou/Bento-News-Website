@@ -105,7 +105,7 @@ const StoreFront = () => {
                 </h3>
               </div>
               {currExpand === i && (
-                <p className="pl-6 pr-24 py-1 animate-fade-in-opacity font-serif leading-tight text-primary/70">
+                <p className="pl-6 pr-24 py-1 animate-fade-in-opacity font-serif leading-tight text-primary/70 text-sm">
                   {desc.description}
                 </p>
               )}

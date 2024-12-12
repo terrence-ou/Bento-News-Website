@@ -4,6 +4,7 @@ import NewsAppView from "@/components/NewsAppView";
 import Header from "@/components/Header";
 import { Sparkles } from "lucide-react";
 import StoreFront from "@/components/StoreFront";
+import Banner from "@/components/Banner";
 
 const baseSize: number = 80;
 const padding: number = 10;
@@ -109,6 +110,7 @@ const Home = () => {
         </div>
       </div>
       <StoreFront />
+      <Banner />
     </>
   );
 };
