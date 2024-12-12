@@ -1,5 +1,6 @@
 import appIcon from "@/assets/icon.png";
 import { CodeXml, CloudDownload } from "lucide-react";
+import DownloadDialog from "./DownloadDialog";
 
 const Banner = () => {
   const buttonStyle =
@@ -14,14 +15,20 @@ const Banner = () => {
         Change the way you understand the world
       </h3>
       <div className="flex gap-3 justify-center items-center mt-4 z-20">
-        <a className={buttonStyle}>
+        <a
+          className={buttonStyle}
+          href="https://github.com/terrence-ou/Bento-News"
+          target="_blank"
+        >
           <CodeXml className="w-5" />
           Source Code
         </a>
-        <a className={buttonStyle}>
-          <CloudDownload className="w-5" />
-          Download
-        </a>
+        <DownloadDialog>
+          <div className={buttonStyle}>
+            <CloudDownload className="w-5" />
+            Download
+          </div>
+        </DownloadDialog>
       </div>
     </div>
   );
