@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import { Sparkles } from "lucide-react";
 import StoreFront from "@/components/StoreFront";
 import Banner from "@/components/Banner";
+import StoreFrontMobile from "@/components/StoreFrontMobile";
 
 const baseSize: number = 80;
 const padding: number = 10;
@@ -32,6 +33,7 @@ const getOrderedCoords = (size: number) => [
   [2 * size, size],
   [3 * size, size],
 ];
+let timeout: NodeJS.Timeout;
 
 const Home = () => {
   const [dimension, setDimension] = useState<number[]>(
@@ -42,6 +44,7 @@ const Home = () => {
 
   const orderedCoords = getOrderedCoords(dimension[0] + dimension[1]);
   const [coords, setCoords] = useState<number[][]>(orderedCoords);
+  const [storeFrontLayout, setStoreFrontLayout] = useState<number>(0);
 
   const handleDimensions = () => {
     const width = window.innerWidth;
@@ -52,10 +55,15 @@ const Home = () => {
       setDimension([baseSize, padding]);
       setCoords(getOrderedCoords(baseSize + padding));
     }
+
+    if (width <= 1024) {
+      setStoreFrontLayout(1);
+    } else {
+      setStoreFrontLayout(0);
+    }
   };
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
     const debounceHandleDimensions = () => {
       clearTimeout(timeout);
       timeout = setTimeout(() => {
@@ -140,7 +148,7 @@ const Home = () => {
           </p>
         </div>
       </div>
-      <StoreFront />
+      {!storeFrontLayout ? <StoreFront /> : <StoreFrontMobile />}
       <Banner />
     </>
   );

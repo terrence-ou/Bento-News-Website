@@ -25,7 +25,7 @@ const Banner = () => {
           Source Code
         </a>
         <DownloadDialog>
-          <div className={cn(buttonStyle, "hidden sm:visible")}>
+          <div className={cn(buttonStyle, "hidden sm:flex")}>
             <CloudDownload className="w-5" />
             Download
           </div>

@@ -1,6 +1,4 @@
-import { useState } from "react";
-import { Circle, CircleDashed } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Circle } from "lucide-react";
 import headlinesImg from "@/assets/imgs/headlines.png";
 import searchImg from "@/assets/imgs/search.png";
 import localNewsImg1 from "@/assets/imgs/local.png";
@@ -43,14 +41,9 @@ const descriptions = [
   },
 ];
 
-const StoreFront = () => {
-  const [currExpand, setCurrExpand] = useState<number>(0);
-  const handleExpand = (i: number) => {
-    setCurrExpand(i);
-  };
-
-  const getDemo = () => {
-    switch (currExpand) {
+const StoreFrontMobile = () => {
+  const getDemo = (index: number) => {
+    switch (index) {
       case 0:
         return <Scroll />;
       case 1:
@@ -67,54 +60,31 @@ const StoreFront = () => {
   };
 
   return (
-    <div className="relative w-full grid grid-cols-5 border-primary/40 border rounded-xl border-dashed overflow-hidden my-4">
-      <div className="col-span-2 pl-10 pt-10 xl:pl-20 xl:pt-20">
-        <h2 className="text-2xl font-bold tracking-tighter pb-4 text-primary/80">
+    <div className="w-full border-primary/40 border rounded-xl border-dashed overflow-hidden my-4">
+      <div className="flex flex-col items-center">
+        <h2 className="text-2xl font-bold tracking-tighter pb-2 pt-4 text-primary/80">
           Bento News's Unique Features
         </h2>
-        <div className="flex flex-col w-full py-6">
-          {descriptions.map((desc, i) => (
-            <div
-              className={cn(
-                "rounded-lg transition-all duration-300",
-                i === currExpand ? "h-32" : "h-8"
-              )}
-              key={desc.title}
-            >
-              <div className="flex gap-2 items-center">
-                <div>
-                  {currExpand === i ? (
-                    <Circle
-                      className="w-4 stroke-primary"
-                      strokeWidth={"3px"}
-                    />
-                  ) : (
-                    <CircleDashed className="w-4 stroke-primary/20" />
-                  )}
-                </div>
-                <h3
-                  className={cn(
-                    "text-lg font-bold transition-all duration-300 hover:text-primary/80 cursor-pointer",
-                    i === currExpand
-                      ? "text-primary"
-                      : "text-primary/20"
-                  )}
-                  onClick={() => handleExpand(i)}
-                >
-                  {desc.title}
-                </h3>
-              </div>
-              {currExpand === i && (
-                <p className="pl-6 pr-4 xl:pr-24 py-1 animate-fade-in-opacity font-serif leading-tight text-primary/70 text-sm">
-                  {desc.description}
-                </p>
-              )}
+        {descriptions.map(({ title, description }, i) => (
+          <div
+            key={`description-${i}`}
+            className="px-4 border-b border-dashed pb-8 pt-4"
+          >
+            <div className="flex items-center justify-center gap-2">
+              <Circle
+                className="w-4 stroke-primary"
+                strokeWidth={"4px"}
+              />
+              <h3 className="text-lg font-semibold">{title}</h3>
             </div>
-          ))}
-        </div>
-      </div>
-      <div className="col-span-3 h-[540px] overflow-hidden rounded-lg mt-4 mr-4">
-        {getDemo()}
+            <p className="font-serif text-sm pt-1 pb-6 text-primary/60">
+              {description}
+            </p>
+            <div className="overflow-hidden h-64 md:h-96">
+              {getDemo(i)}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
@@ -190,12 +160,12 @@ const GenImgs = () => {
         >
           <img
             src={img}
-            className="w-56"
+            className="w-24 md:w-40"
             style={{
               animation: `blurIn ${Math.random() * 3 + 0.5}s`,
             }}
           />
-          <p className="font-mono font-bold text-primary/70">
+          <p className="font-mono text-xs font-bold text-primary/70">
             {styles[i]}
           </p>
         </figure>
@@ -204,4 +174,4 @@ const GenImgs = () => {
   );
 };
 
-export default StoreFront;
+export default StoreFrontMobile;
