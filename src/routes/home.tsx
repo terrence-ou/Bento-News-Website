@@ -95,7 +95,7 @@ const Home = () => {
               <p>News APP</p>
             </div>
             <div className="font-bold">
-              1000x faster then Google News. *
+              1000x faster than Google News. *
             </div>
           </div>
           {Array.from("BENTONEWS").map((letter, i) => {
@@ -140,7 +140,7 @@ const Home = () => {
             collection.
           </p>
           <p className="animate-fade-in-3">
-            Collect and organize the news as you preferred locally to{" "}
+            Collect and organize the news as you prefer locally to{" "}
             <span className="font-bold text-primary/80">
               ensure your privacy
             </span>
