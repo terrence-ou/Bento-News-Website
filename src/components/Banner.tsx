@@ -1,6 +1,7 @@
 import appIcon from "@/assets/icon.png";
 import { CodeXml, CloudDownload } from "lucide-react";
 import DownloadDialog from "./DownloadDialog";
+import { cn } from "@/lib/utils";
 
 const Banner = () => {
   const buttonStyle =
@@ -24,7 +25,7 @@ const Banner = () => {
           Source Code
         </a>
         <DownloadDialog>
-          <div className={buttonStyle}>
+          <div className={cn(buttonStyle, "hidden sm:visible")}>
             <CloudDownload className="w-5" />
             Download
           </div>

@@ -114,7 +114,7 @@ const Home = () => {
         <NewsAppView />
       </div>
       <div className="text-center my-20 px-1 sm:px-0 sm:my-32">
-        <h1 className="text-[24px] sm:text-[32px] font-bold animate-fade-in tracking-wide my-2">
+        <h1 className="text-[28px] leading-tight tracking-tight sm:text-[32px] font-bold animate-fade-in sm:leading-snug sm:tracking-wide my-2">
           Revolutionize how you manage and analyze news
         </h1>
         <div className="text-[16px] sm:text-[18px] font-medium leading-tight text-primary/60 tracking-tight">
