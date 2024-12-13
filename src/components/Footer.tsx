@@ -12,7 +12,7 @@ const Footer = () => {
             >
               Github
             </a>
-            <a
+            {/* <a
               href="https://www.linkedin.com/in/tingsong-ou-231931196/"
               target="_blank"
               className="px-3 border-l hover:underline hover:cursor-pointer"
@@ -25,7 +25,7 @@ const Footer = () => {
               className="px-3 border-l hover:underline hover:cursor-pointer"
             >
               X (Twitter)
-            </a>
+            </a> */}
             <a
               href="mailto:terrence@clickvisionstudio.com"
               className="px-3 border-l hover:underline hover:cursor-pointer"
