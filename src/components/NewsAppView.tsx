@@ -13,7 +13,7 @@ const imgs = [img0, img1, img2, img3, img4, img5, img6, img7];
 const NewsAppView = () => {
   return (
     <div
-      className="absolute -bottom-[400px] left-[30%] w-[1100px] z-10"
+      className="absolute -bottom-[300px] -left-[20%] sm:-bottom-[400px] sm:left-[30%] w-[700px] sm:w-[1100px] z-10 opacity-80 sm:opacity-100"
       style={{
         perspective: "1400px",
       }}
@@ -58,7 +58,7 @@ const Body = () => {
   return (
     <div>
       <h2
-        className="my-3 text-3xl font-serif font-semibold animate-translateZ"
+        className="my-2 sm:my-3 text-xl sm:text-3xl font-serif font-semibold animate-translateZ"
         style={{
           transform: "perspective(2400px)",
         }}
@@ -84,19 +84,21 @@ const Card = ({
   return (
     <div className="animate-translateZ-card p-2 border bg-background/80 rounded-lg transition-all duration-150 shadow-news-card">
       <img src={img} />
-      <h1 className="font-semibold leading-tight text-md hover:underline hover:cursor-pointer">
+      <h1 className="font-semibold leading-tight text-sm sm:text-md hover:underline hover:cursor-pointer">
         {news.title}
       </h1>
       <div className="flex justify-start items-center gap-2 my-3">
-        <div className="flex items-center justify-center max-w-[60%] px-2 font-semibold text-xs text-background bg-primary/70 rounded">
+        <div className="flex items-center justify-center max-w-[60%] px-2 font-semibold text-[8px] sm:text-xs text-background bg-primary/70 rounded">
           {news.source}
         </div>
 
-        <p className="text-xs text-primary/50">
+        <p className="text-[8px] sm:text-xs text-primary/50">
           {news.publishedAt.slice(0, 10)}
         </p>
       </div>
-      <p className="font-serif text-[0.8rem]">{news.description}</p>
+      <p className="font-serif text-[10px] sm:text-[0.8rem]">
+        {news.description}
+      </p>
     </div>
   );
 };

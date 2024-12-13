@@ -8,9 +8,20 @@ import Banner from "@/components/Banner";
 
 const baseSize: number = 80;
 const padding: number = 10;
-const size: number = baseSize + padding;
 
-const orderedCoords = [
+const mobileSize: number = 50;
+const mobilePadding: number = 6;
+
+const shuffleArray = (array: number[][]) => {
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+};
+
+const getOrderedCoords = (size: number) => [
   [0, 0],
   [size, 0],
   [size * 2, 0],
@@ -22,32 +33,52 @@ const orderedCoords = [
   [3 * size, size],
 ];
 
-const shuffleArray = (array: number[][]) => {
-  const newArray = [...array];
-  for (let i = newArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
-  }
-  return newArray;
-};
-
 const Home = () => {
-  const [coords, setCoords] =
-    useState<typeof orderedCoords>(orderedCoords);
+  const [dimension, setDimension] = useState<number[]>(
+    window.innerWidth > 640
+      ? [baseSize, padding]
+      : [mobileSize, mobilePadding]
+  );
+
+  const orderedCoords = getOrderedCoords(dimension[0] + dimension[1]);
+  const [coords, setCoords] = useState<number[][]>(orderedCoords);
+
+  const handleDimensions = () => {
+    const width = window.innerWidth;
+    if (width <= 640) {
+      setDimension([mobileSize, mobilePadding]);
+      setCoords(getOrderedCoords(mobileSize + mobilePadding));
+    } else {
+      setDimension([baseSize, padding]);
+      setCoords(getOrderedCoords(baseSize + padding));
+    }
+  };
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    const debounceHandleDimensions = () => {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        handleDimensions();
+      }, 100);
+    };
+    handleDimensions();
+    window.addEventListener("resize", debounceHandleDimensions);
     const interval = setInterval(() => {
-      setCoords(() => shuffleArray(orderedCoords));
+      setCoords((prev) => shuffleArray(prev));
     }, 2000);
-    return () => clearInterval(interval);
+    return () => {
+      window.removeEventListener("resize", debounceHandleDimensions);
+      clearInterval(interval);
+    };
   }, []);
 
   return (
     <>
-      <div className="relative flex flex-col w-full h-[630px] bg-primary/10 rounded-[16px] p-5 overflow-hidden">
+      <div className="relative flex flex-col w-full h-[630px] bg-primary/10 rounded-[16px] p-2 sm:p-5 overflow-hidden">
         <Header />
-        <div className="absolute bottom-[250px] left-[55px] z-30">
-          <div className="py-8 text-xl tracking-tight">
+        <div className="absolute -bottom-[14%] rounded-lg left-[50%] -translate-x-[50%] -translate-y-[50%] w-[340px] h-[220px] shadow-lg sm:bottom-[250px] sm:left-[55px] z-30 px-4 sm:px-0 sm:h-fit sm:w-fit sm:translate-x-0 sm:translate-y-0 bg-background sm:bg-transparent sm:shadow-none">
+          <div className="py-4 md:py-8 text-lg md:text-xl tracking-tight">
             <div className="flex items-center">
               <p>Your</p>
               <Sparkles className="w-4 ml-2" />
@@ -66,12 +97,12 @@ const Home = () => {
                 className={cn(
                   "absolute flex items-center justify-center font-bold transition-all duration-500 rounded-lg shadow-lg",
                   i > 4
-                    ? "bg-primary text-secondary font-serif text-[56px]"
-                    : "bg-secondary text-primary font-sans text-[60px]"
+                    ? "bg-primary text-secondary font-serif text-[34px] sm:text-[56px]"
+                    : "bg-secondary text-primary font-sans text-[40px] sm:text-[60px]"
                 )}
                 style={{
-                  width: baseSize,
-                  height: baseSize,
+                  width: dimension[0],
+                  height: dimension[0],
                   transform: `translate(${coords[i][0]}px, ${coords[i][1]}px)`,
                 }}
               >
@@ -82,17 +113,17 @@ const Home = () => {
         </div>
         <NewsAppView />
       </div>
-      <div className="text-center my-32">
-        <h1 className="text-[32px] font-bold animate-fade-in tracking-wide my-2">
+      <div className="text-center my-20 px-1 sm:px-0 sm:my-32">
+        <h1 className="text-[24px] sm:text-[32px] font-bold animate-fade-in tracking-wide my-2">
           Revolutionize how you manage and analyze news
         </h1>
-        <div className="text-[18px] font-medium leading-tight text-primary/60 tracking-tight">
+        <div className="text-[16px] sm:text-[18px] font-medium leading-tight text-primary/60 tracking-tight">
           <p className="animate-fade-in-1">
             Bento News supports content from over{" "}
             <span className="font-bold text-primary/80">3,000</span>{" "}
             trusted media outlets worldwide.
           </p>
-          <p className="animate-fade-in-2">
+          <p className="animate-fade-in-2 my-2 sm:my-0">
             Harness{" "}
             <span className="font-bold text-primary/80">
               AI-driven tools

@@ -11,7 +11,7 @@ const Header = () => {
           Bento News
         </h3>
       </div>
-      <div className="flex items-center bg-background rounded-full px-2 py-1 shadow-body">
+      <div className="sm:flex items-center bg-background rounded-full px-2 py-1 shadow-body sm:visible hidden">
         <div className="flex h-8 items-center gap-3 px-4 font-semibold rounded-full">
           <CodeXml size={20} />
           <a
